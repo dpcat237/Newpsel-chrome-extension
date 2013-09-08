@@ -1,0 +1,35 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li{
+  list-style-type: none;
+  padding-top: 3px
+}
+
+
+#popup {
+  min-width: 20px;
+  min-height: 20px;
+  margin: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hide{
+  display: none;
+}
+
+#page-labels{
+  margin-top: 10px;
+}

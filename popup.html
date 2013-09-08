@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="AngularChromeEx" ng-csp>
+    <head>
+        <link rel="stylesheet" href="css/popup.css">
+
+        <script src="js/lib/jquery-1.9.1.min.js"></script>
+        <script src="js/lib/jquery.cookie.js "></script>
+        <script src="js/lib/angular.min.js"></script>
+
+        <script src="js/app/app.js"></script>
+        <script src="js/app/popup.js"></script>
+    </head>
+    <body id="popup">
+        <div ng-controller="PageController" id="page-controller">
+            <div id="page-welcome" class="hide">
+                <header>
+                    <h3>Newpsel</h3>
+                </header>
+
+            
+                <label>Sign in:</label>
+                <input type="text" id="extension_key" placeholder="Enter key">
+                <button ng-click="doLogin()">Submit</button>
+                <br><br>
+
+                <label>Request a key:</label>
+                <input type="text" id="username" placeholder="Enter your username">
+                <button ng-click="requestKey()">Request</button>
+            </div>
+
+            <div id="page-labels" class="hide">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

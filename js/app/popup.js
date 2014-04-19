@@ -117,7 +117,8 @@ function savePage(){
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
         xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
+            window.close();
+            /*if (xhr.readyState == 4) {
                 var resp = JSON.parse(xhr.responseText);
                 if (resp.response) {
                     var title = "Done!";
@@ -132,13 +133,15 @@ function savePage(){
                 setTimeout(
                     function() {
                         notification.cancel();
-                        window.close();
+                        
                     },
-                    '1500'
+                    '500'
                 );
-            }
+            }*/
         };
         xhr.send(sendData);
+        
+
     });
 }
 

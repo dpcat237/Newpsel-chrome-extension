@@ -113,6 +113,7 @@ function savePage(){
         dataObject.webTitle = control.tabTitle;
         dataObject.webUrl = control.tabUrl;
         var sendData = JSON.stringify(dataObject);
+        $('#popup').hide();
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
@@ -140,8 +141,6 @@ function savePage(){
             }*/
         };
         xhr.send(sendData);
-        
-
     });
 }
 
@@ -158,7 +157,7 @@ function selectView(){
 
 function showLabels(labels) {
     $.each(labels, function(i, val) {
-        var content = '<li><button class="label" data-id="'+val.id+'">'+val.name+'</button></li>';
+        var content = '<li class="label" data-id="'+val.id+'"><a>'+val.name+'</a></li>';
         $("#page-labels ul").append(content);
     });
 }

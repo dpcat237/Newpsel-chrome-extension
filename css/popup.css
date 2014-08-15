@@ -2,24 +2,53 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+a {
+    color: #333;
+    font-size: 14px;
+}
+a:hover {
+    text-decoration: none;
+    color: #333;
+}
+a:focus {
+    text-decoration: none;
+    color: #333;
+}
+
 ul {
   margin: 0;
   padding: 0;
 }
 
 ul li{
+  line-height: 20px;
   list-style-type: none;
-  padding-top: 3px
+  display: list-item;
+  text-align: -webkit-match-parent;
+  cursor: pointer;
+  padding: 3px 10px 3px 10px;
 }
 
+
+.dropdown-menu > li > a {
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu > li:hover, .dropdown-menu > li:focus {
+    background: #DDDDDD;
+}
+
+.dropdown-menu {
+    box-shadow: none;
+    padding: 0px;
+}
 
 #popup {
   min-width: 20px;
   min-height: 20px;
-  margin: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  margin: 0;
+  padding: 0;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

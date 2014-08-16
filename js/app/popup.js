@@ -81,17 +81,17 @@ function fetchLabels(){
     xhr.onreadystatechange = function() {
         var resp = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && resp.response) {
-                showLabels(resp.labels);
-          } else if (!resp.response) {
-                var title = "Alert!";
-                var message = "Something went wrong. Contact to us.";
-                var notification = webkitNotifications.createNotification(control.icon, title,  message);
-                notification.show();
-                setTimeout(
-                    function() { notification.cancel(); },
-                    '3000'
-                );
-            }
+            showLabels(resp.labels);
+        } else if (!resp.response) {
+            var title = "Alert!";
+            var message = "Something went wrong. Contact to us.";
+            var notification = webkitNotifications.createNotification(control.icon, title,  message);
+            notification.show();
+            setTimeout(
+                function() { notification.cancel(); },
+                '3000'
+            );
+        }
     };
     xhr.send(sendData);
 }
@@ -113,13 +113,14 @@ function savePage(){
         dataObject.webTitle = control.tabTitle;
         dataObject.webUrl = control.tabUrl;
         var sendData = JSON.stringify(dataObject);
-        $('#popup').hide();
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
-        xhr.onreadystatechange = function() {
+        xhr.onloadstart = function () {
             window.close();
-            /*if (xhr.readyState == 4) {
+        };
+        /*xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
                 var resp = JSON.parse(xhr.responseText);
                 if (resp.response) {
                     var title = "Done!";
@@ -138,8 +139,8 @@ function savePage(){
                     },
                     '500'
                 );
-            }*/
-        };
+            }
+        };*/
         xhr.send(sendData);
     });
 }

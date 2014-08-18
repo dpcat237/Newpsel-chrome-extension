@@ -9,7 +9,7 @@ function PageController($scope) {
   $scope.requestKey = function() {
     $scope.url = control.web+"api/chrome/request/";
     var dataObject = new Object();
-    dataObject.username = $('#username').val();
+    dataObject.email = $('#email').val();
     $scope.sendData = JSON.stringify(dataObject);
 
     var xhr = new XMLHttpRequest();

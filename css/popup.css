@@ -15,6 +15,11 @@ a:focus {
     color: #333;
 }
 
+h3 {
+    color: #2f74c3;
+    text-align: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -45,6 +50,7 @@ ul li{
 }
 
 #popup {
+  background-color: #ccc;
   min-width: 20px;
   min-height: 20px;
   margin: 0;
@@ -53,6 +59,10 @@ ul li{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#page-welcome {
+    padding: 5px;
 }
 
 .hide{

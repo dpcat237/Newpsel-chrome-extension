@@ -165,6 +165,9 @@ function selectView(){
         fetchLabels();
     } else {
         $('#page-welcome').removeClass('hide');
+        var popup = $('#popup');
+        popup.removeClass('backg-w');
+        popup.addClass('backg-g');
     }
 }
 

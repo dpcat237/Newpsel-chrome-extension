@@ -17,20 +17,23 @@ function PageController($scope) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             var resp = JSON.parse(xhr.responseText);
+            var title;
+            var message;
             if (resp.response) {
-                var title = "Done!";
-                var message = "We sent new key to your email.";
+                title = "Done!";
+                message = "We sent new key to your email.";
             } else {
-                var title = "Alert!";
-                var message = "Something went wrong. Contact to us.";
+                title = "Alert!";
+                message = "Something went wrong.";
             }
 
-            var notification = webkitNotifications.createNotification(control.icon, title, message);
-            notification.show();
-            setTimeout(
-                function() { notification.cancel(); },
-                '3000'
-            );
+            showNotification(title, message);
+            if (resp.response) {
+                setTimeout(
+                    function() { window.close(); },
+                    '100'
+                );
+            }
         }
     };
     xhr.send($scope.sendData);
@@ -47,23 +50,25 @@ function PageController($scope) {
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 var resp = JSON.parse(xhr.responseText);
+                var title;
+                var message;
                 if (resp.response) {
-                    var title = "Done!";
-                    var message = "You logged successfully";
+                    title = "Done!";
+                    message = "You logged successfully";
                     $.cookie("newpsel_key", dataObject.appKey, { expires : 365 });
                     $.cookie("newpsel_logged", 1, { expires : 365 });
-                    window.close();
                 } else {
-                    var title = "Alert!";
-                    var message = "Something went wrong. Contact to us.";
+                    title = "Alert!";
+                    message = "Something went wrong. Contact to us.";
                 }
 
-                var notification = webkitNotifications.createNotification(control.icon, title,  message);
-                notification.show();
-                setTimeout(
-                    function() { notification.cancel(); },
-                    '3000'
-                );
+                showNotification(title, message);
+                if (resp.response) {
+                    setTimeout(
+                        function() { window.close(); },
+                        '100'
+                    );
+                }
               }
         };
         xhr.send($scope.sendData);
@@ -116,32 +121,39 @@ function savePage(){
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", url, true);
-        xhr.onloadstart = function () {
-            window.close();
-        };
-        /*xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState == 4) {
                 var resp = JSON.parse(xhr.responseText);
+                var title;
+                var message;
                 if (resp.response) {
-                    var title = "Done!";
-                    var message = "Page saved!";                    
+                    title = "Done!";
+                    message = "Page saved!";
                 } else {
-                    var title = "Alert!";
-                    var message = "Something went wrong. Contact to us.";
+                    title = "Alert!";
+                    message = "Something went wrong. Try again in few minutes.";
                 }
 
-                var notification = webkitNotifications.createNotification(control.icon, title, message);
-                notification.show();
+                showNotification(title, message);
                 setTimeout(
-                    function() {
-                        notification.cancel();
-                        
-                    },
-                    '500'
+                    function() { window.close(); },
+                    '100'
                 );
             }
-        };*/
+        };
         xhr.send(sendData);
+    });
+}
+
+function showNotification(title, message){
+    var opt = {
+        type: "basic",
+        title: title,
+        message: message,
+        iconUrl: "icon.png"
+    };
+    chrome.notifications.create("", opt, function(id) {
+        console.error(chrome.runtime.lastError);
     });
 }
 

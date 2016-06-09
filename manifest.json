@@ -1,7 +1,7 @@
 ﻿{
     "manifest_version": 2,
     "name": "Newpsel",
-	"version": "1.0.8",
+	"version": "1.0.9",
 
 	"description": "Save page to later.",
 	"icons": {

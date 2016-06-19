@@ -1,13 +1,13 @@
 ﻿var control = new Object();
 control.logged = false;
-control.web = 'https://www.newpsel.com/';
+control.web = 'https://api.newpsel.com/';
 control.icon = control.web+'bundles/npsfrontend/images/logo_web.png';
 control.tabTitle = '';
 control.tabUrl = '';
 
 function PageController($scope) {
   $scope.requestKey = function() {
-    $scope.url = control.web+"api/chrome/request";
+    $scope.url = control.web+"chrome/request";
     var dataObject = new Object();
     dataObject.email = $('#email').val();
     $scope.sendData = JSON.stringify(dataObject);
@@ -40,7 +40,7 @@ function PageController($scope) {
   };
 
     $scope.doLogin = function() {
-        $scope.url = control.web+"api/chrome/login";
+        $scope.url = control.web+"chrome/login";
         var dataObject = new Object();
         dataObject.appKey = $('#extension_key').val();
         $scope.sendData = JSON.stringify(dataObject);
@@ -76,7 +76,7 @@ function PageController($scope) {
 }
 
 function fetchLabels(){
-    var url = control.web+"api/chrome/labels";
+    var url = control.web+"chrome/labels";
     var dataObject = new Object();
     dataObject.appKey = $.cookie("newpsel_key");
     var sendData = JSON.stringify(dataObject);
@@ -111,7 +111,7 @@ function getTabData()
 
 function savePage(){
     $("#page-labels").on("click", ".label", function(event){
-        var url = control.web+"api/chrome/add";
+        var url = control.web+"chrome/add";
         var dataObject = new Object();
         dataObject.appKey = $.cookie("newpsel_key");
         dataObject.labelId = $(this).data('id');
